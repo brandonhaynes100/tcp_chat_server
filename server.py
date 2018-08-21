@@ -4,7 +4,7 @@ import socket
 import sys
 
 
-PORT = 8002
+PORT = 8000
 
 
 class ChatServer(threading.Thread):
@@ -45,8 +45,12 @@ class ChatServer(threading.Thread):
                 conn.sendall(b'Here is a list of all users in the channel:\n')
                 [conn.sendall('{} \n'.format(chatters.nickname).encode()) for chatters in self.client_pool] #we know there is at least this user in client_pool
             elif data[0] == '@nickname':
-                pass
+                #unsure exactly, perhaps -
+                # for client with client.id = id, client.nickname = data[1]
+                conn.sendall(b'Sorry, updating your nickname is not functional yet.\n')
             elif data[0] == '@dm':
+                #needs to be filled out.
+                conn.sendall(b'Sorry, that feature is not functional yet.\n')
                 pass
             else:
                 conn.sendall(b'Invalid command! Please try again.\n')
