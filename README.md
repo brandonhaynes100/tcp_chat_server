@@ -28,4 +28,5 @@ We will be building a TCP-based chatroom using Python's low-level socket interfa
 
 2018-08-20 19:30:41 README and checklist updated.
 
+2018-08-20 23:37:28 @list for all current users in the chat is now working. 
 

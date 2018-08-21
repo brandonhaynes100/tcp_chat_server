@@ -8,6 +8,10 @@ PORT = 8002
 
 
 class ChatServer(threading.Thread):
+    """ Clients should be able to connect using a telnet or netcat client and communicate
+        with each other. Clients should also be able to run special commands to quit,
+        list users, reset their nickname, and send direct messages.
+    """
     def __init__(self, port, host='localhost'):
         super().__init__(daemon=True)
         self.port = port
@@ -37,6 +41,13 @@ class ChatServer(threading.Thread):
                 [c.conn.sendall(reply) for c in self.client_pool if len(self.client_pool)]
                 self.client_pool = [c for c in self.client_pool if c.id != id]
                 conn.close()
+            elif data[0] == '@list':
+                conn.sendall(b'Here is a list of all users in the channel:\n')
+                [conn.sendall('{} \n'.format(chatters.nickname).encode()) for chatters in self.client_pool] #we know there is at least this user in client_pool
+            elif data[0] == '@nickname':
+                pass
+            elif data[0] == '@dm':
+                pass
             else:
                 conn.sendall(b'Invalid command! Please try again.\n')
         else:
@@ -71,6 +82,8 @@ class ChatServer(threading.Thread):
 
 
 if __name__ == '__main__':
+    """ Main program to run if this file was called directly
+    """
     server = ChatServer(PORT)
     try:
         server.run()

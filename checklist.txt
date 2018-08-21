@@ -16,7 +16,7 @@ Submission Checklist:
 - [x] Clients should be able to send messages to all other clients by sending it to the server without a special command
 - [ ] Clients should be able to run special commands by sending messages that start with a command name, for example:
 - [x] The client should send @quit to disconnect (this should not stop the server… only the client that invoked @quit)
-- [ ] The client should send @list to list all connectued users
+- [x] The client should send @list to list all connectued users
 - [ ] The client should send @nickname <new-name> to change their nickname
 - [ ] The client should send @dm <to-username> <message> to send a message directly to another user by nickname
 - [x] Connected clients should be maintained as an in memory collection on the server instance called the client_pool
