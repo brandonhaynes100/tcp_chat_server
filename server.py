@@ -47,6 +47,10 @@ class ChatServer(threading.Thread):
             elif data[0] == '@nickname':
                 #unsure exactly, perhaps -
                 # for client with client.id = id, client.nickname = data[1]
+                # however, I'm not sure we can change the  properties of client here
+                # since we have copies of the values passed to us, but not the actual
+                # object to change directly. Due to time constraints, we were unable
+                # to investigate further.
                 conn.sendall(b'Sorry, updating your nickname is not functional yet.\n')
             elif data[0] == '@dm':
                 #needs to be filled out.
