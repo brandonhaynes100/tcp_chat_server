@@ -1,4 +1,4 @@
-from .client import ChatClient
+from client import ChatClient
 import threading
 import socket
 import sys
@@ -28,9 +28,54 @@ class ChatServer(threading.Thread):
         self.server.listen(10)
 
     def parser(self, id, nickname, conn, message):
-        data = message.decode.split(maxsplit=1)
-        if data[0] == '@quit':
-            conn.sendall(b'You have left the channel. You will be missed.\n')
-            reply = nickname.encode() + b' has left the channel.\n'
+        if message.decode.evoke().startswith('@'):
+            data = message.decode.split(maxsplit=1)
+
+            if data[0] == '@quit':
+                conn.sendall(b'You have left the channel. You will be missed.\n')
+                reply = nickname.encode() + b' has left the channel.\n'
+                [c.conn.sendall(reply) for c in self.client_pool if len(self.client_pool)]
+                self.client_pool = [c for c in self.client_pool if c.id != id]
+                conn.close()
+            else:
+                conn.sendall(b'Invalid command! Please try again.\n')
+        else:
+            reply = nickname.encode() + b': ' + message
             [c.conn.sendall(reply) for c in self.client_pool if len(self.client_pool)]
+
+
+    def run_thread(self, id, nickname, conn, addr):
+        print('{} connected with {}:{}'.format(nickname, addr[0], str(addr[1])))
+        try:
+            while True:
+                data = conn.recv(4086)
+                self.parser(id, nickname, conn, data)
+        except (ConnectionResetError, BrokenPipeError, OSError):
+            conn.close()
+
+    def run(self):
+        print('Server running on {}'.format(PORT))
+        while True:
+            conn, addr = self.server.accept()
+            client = ChatClient(conn, addr)
+            self.client_pool.append(client)
+            threading.Thread(
+                target=self.run_thread,
+                args=(client.id, client.nickname, client.conn, client.addr),
+                daemon=True,
+            ).start()
+
+
+    def exit(self):
+        self.server.close()
+
+
+    if __name__ == '__main__':
+        server = ChatServer(PORT)
+        try:
+            server.run()
+        except KeyboardInterrupt:
+            [c.conn.close() for c in server.client_pool if len(server.client_pool)]
+            server.exit()
+
 
