@@ -19,3 +19,8 @@ We will be building a TCP-based chatroom using Python's low-level socket interfa
 <!-- Ctrl+Shift+I (on Win & Linux) Inserts current DateTime, -->
 
 2018-08-20 16:19:39 Repo created and files scaffold.
+
+?? when we switched computers (check upload time)
+
+2018-08-20 18:56:15 First pass of writting the ChatServer code
+
