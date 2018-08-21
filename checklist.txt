@@ -1,32 +1,29 @@
 Submission Checklist:
 
 - [x] Create a new reposity called tcp-chat-server, and add your partner as a collaborator
-- [x] Create a new branch, appropriately named, for today's work
+- [x] Create a new branch, appropriately named, for today’s work
 - [x] Configure the root of your repository with the following files and directories.
 - [ ] README.md has Containing good documentation for how to setup, install, and run your application
 - [x] .editorconfig - Contains a standard Editor Configuration (use class standard)
 - [x] .gitignore - Contains a robust Git Ignore file for all relevant Python related materials
-- [ ] test/ - Contains unit tests for your application
-- [ ] Thoughfully name and organize any aditional configuration or module files.
-- [ ] Create a TCP Server using the Python standard socket module
-- [ ] The server should be running on an individual thread using the threading module in Python
+- [x] test/ - Contains unit tests for your application
+- [x] Thoughfully name and organize any aditional configuration or module files.
+- [x] Create a TCP Server using the Python standard socket module
+- [x] The server should be running on an individual thread using the threading module in Python
 - [x] Create a Client class that models an individual connection, and exists as a module in your application
 - [x] Each client instance should contain at least an id, nickname, and socket conn and addr
-- [ ] Each client instance should be started on an individual thread using the threading module in Python
-- [ ] Clients should be able to send messages to all other clients by sending it to the server without a special command
+- [x] Each client instance should be started on an individual thread using the threading module in Python
+- [x] Clients should be able to send messages to all other clients by sending it to the server without a special command
 - [ ] Clients should be able to run special commands by sending messages that start with a command name, for example:
-- [ ] The client should send @quit to disconnect (this should not stop the server… only the client that invoked @quit)
+- [x] The client should send @quit to disconnect (this should not stop the server… only the client that invoked @quit)
 - [ ] The client should send @list to list all connectued users
 - [ ] The client should send @nickname <new-name> to change their nickname
 - [ ] The client should send @dm <to-username> <message> to send a message directly to another user by nickname
-- [ ] Connected clients should be maintained as an in memory collection on the server instance called the client_pool
+- [x] Connected clients should be maintained as an in memory collection on the server instance called the client_pool
 - [ ] When a socket emits the close event, the socket should be removed from the client_pool
-- [ ] When a socket emits the data event, the data should be logged on the server and the commands below should be implemented
-- [ ] Testing: No testing requirements for this lab.
+- [ ] When a socket emits the data event, the data should be logged on the server and the commands below should be implemented [nothing listed after this]
+- [x] Testing: No testing requirements for this lab.
 - [ ] Create a pull request from your feature branch to your master branch.
-- [ ] Update the README.md
-- [ ] create and update checklist in the pull request comments
+- [x] Update the README.md
+- [x] create and update checklist in the pull request comments
 
-Message Input
-
-Message @Christopher L Chapman

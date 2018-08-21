@@ -4,7 +4,7 @@ import socket
 import sys
 
 
-PORT = 8000
+PORT = 8002
 
 
 class ChatServer(threading.Thread):
@@ -28,8 +28,8 @@ class ChatServer(threading.Thread):
         self.server.listen(10)
 
     def parser(self, id, nickname, conn, message):
-        if message.decode.evoke().startswith('@'):
-            data = message.decode.split(maxsplit=1)
+        if message.decode().startswith('@'):
+            data = message.decode().split(maxsplit=1)
 
             if data[0] == '@quit':
                 conn.sendall(b'You have left the channel. You will be missed.\n')
@@ -70,12 +70,12 @@ class ChatServer(threading.Thread):
         self.server.close()
 
 
-    if __name__ == '__main__':
-        server = ChatServer(PORT)
-        try:
-            server.run()
-        except KeyboardInterrupt:
-            [c.conn.close() for c in server.client_pool if len(server.client_pool)]
-            server.exit()
+if __name__ == '__main__':
+    server = ChatServer(PORT)
+    try:
+        server.run()
+    except KeyboardInterrupt:
+        [c.conn.close() for c in server.client_pool if len(server.client_pool)]
+        server.exit()
 
 
