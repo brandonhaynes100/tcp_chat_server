@@ -19,3 +19,14 @@ We will be building a TCP-based chatroom using Python's low-level socket interfa
 <!-- Ctrl+Shift+I (on Win & Linux) Inserts current DateTime, -->
 
 2018-08-20 16:19:39 Repo created and files scaffold.
+
+?? when we switched computers (check upload time)
+
+2018-08-20 18:56:15 First pass of writting the ChatServer code
+
+2018-08-20 19:22:39 ChatServer and ChatClient proof of life works. We can run the server, have at least two users connect, and the chat works between them. Currently the only @ command that is in the code is @quit, which is working as expected. Other commands need to be added. A basic test file has been created for future requirements. We forsee some complications with accessing the correct directory and imports.
+
+2018-08-20 19:30:41 README and checklist updated.
+
+2018-08-20 23:37:28 @list for all current users in the chat is now working. 
+
