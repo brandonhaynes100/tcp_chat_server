@@ -7,11 +7,11 @@ Submission Checklist:
 - [x] .editorconfig - Contains a standard Editor Configuration (use class standard)
 - [x] .gitignore - Contains a robust Git Ignore file for all relevant Python related materials
 - [ ] test/ - Contains unit tests for your application
-- [x] Thoughfully name and organize any aditional configuration or module files.
+- [ ] Thoughfully name and organize any aditional configuration or module files.
 - [ ] Create a TCP Server using the Python standard socket module
 - [ ] The server should be running on an individual thread using the threading module in Python
-- [ ] Create a Client class that models an individual connection, and exists as a module in your application
-- [ ] Each client instance should contain at least an id, nickname, and socket conn and addr
+- [x] Create a Client class that models an individual connection, and exists as a module in your application
+- [x] Each client instance should contain at least an id, nickname, and socket conn and addr
 - [ ] Each client instance should be started on an individual thread using the threading module in Python
 - [ ] Clients should be able to send messages to all other clients by sending it to the server without a special command
 - [ ] Clients should be able to run special commands by sending messages that start with a command name, for example:
